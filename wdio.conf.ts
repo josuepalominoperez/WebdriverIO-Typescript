@@ -1,6 +1,7 @@
 import type { Options } from '@wdio/types'
 
 export const config: Options.Testrunner = {
+    
     //
     // ====================
     // Runner Configuration
@@ -12,6 +13,7 @@ export const config: Options.Testrunner = {
             project: './tsconfig.json'
         }
     },
+    
     
     
     //
@@ -53,7 +55,10 @@ export const config: Options.Testrunner = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 10,
+    maxInstances: 3,
+    
+    
+    
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -64,15 +69,22 @@ export const config: Options.Testrunner = {
         // maxInstances can get overwritten per capability. So if you have an in-house Selenium
         // grid with only 5 firefox instances available you can make sure that not more than
         // 5 instances get started at a time.
-        maxInstances: 5,
+       
         //
-        browserName: 'firefox',
+        browserName: 'chrome',
         acceptInsecureCerts: true
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
         // excludeDriverLogs: ['bugreport', 'server'],
-    }],
+    },
+    {
+    
+        browserName: 'firefox',
+        acceptInsecureCerts: true
+        
+    }
+],
     //
     // ===================
     // Test Configurations
@@ -120,7 +132,7 @@ export const config: Options.Testrunner = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['geckodriver'],
+    services: ['selenium-standalone'],
     
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -151,7 +163,7 @@ export const config: Options.Testrunner = {
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
-        timeout: 60000
+        timeout: 100000
     },
     //
     // =====
